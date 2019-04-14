@@ -62,7 +62,7 @@ app.listen(app.get('port'), function () {
 
 function addToCart(data, res) {
 	messageData = {
-		fulfillmentText: "added"
+		fulfillmentText: data.queryResult.parameters.productid + " added"
 	};
 	res.send(messageData);
 }
