@@ -1,22 +1,21 @@
 /*jshint esversion: 6 */
 'use strict';
 
-const config = require('./config');
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const Util = require('./util');
-const OCAPIConfig = Util.readOCAPIConfig();
+const config = Util.readOCAPIConfig();
 const ProductSearch = require('./OCAPI/product_search');
-const productSearch = new ProductSearch(OCAPIConfig.clientId, OCAPIConfig.siteId, OCAPIConfig.host, OCAPIConfig.version);
+const siteID = config.siteId;
+const productSearch = new ProductSearch(config.clientId, siteID, config.host, config.version);
+const Customers = require('./OCAPI/customers');
+const customers = new Customers(config.clientId,config.clientPassword,config.host,null,config.version);
+const Baskets = require('./OCAPI/baskets');
+const baskets = new Baskets(config.clientId,config.clientPassword,config.host, null, config.version);
 
 var text = '';
 var messageData;
-
-if (!config.SERVER_URL) { //used for ink to static files
-	throw new Error('missing SERVER_URL');
-}
-
 
 app.set('port', (process.env.PORT || 4988))
 
@@ -61,10 +60,37 @@ app.listen(app.get('port'), function () {
 });
 
 function addToCart(data, res) {
-	messageData = {
-		fulfillmentText: data.queryResult.parameters.productid + " added"
-	};
-	res.send(messageData);
+	var authorization = null;
+	var basketId = null;
+
+	var productID =  data.queryResult.parameters.productid;
+	var products = [{
+		product_id:productID,
+		quantity:1
+	}];
+
+	customers.auth(config.siteId, {type:'guest'},null).then(data => {
+		// authenticated successfully
+		if (checkoutConfig.auth.type == "credentials"){
+			console.log("login successful");
+		}else {
+			console.log('Customer created: '+data.parsedData.customer_id);
+		}
+		// now get a basket for that customer
+		authorization = data.authorization;
+		return baskets.createBasket(config.siteId, authorization);
+	}).then(data=>{
+		// basket created successfully
+		basketId = data.basket_id;
+		console.log('Basket created: ' + basketId);
+		// now add products to the basket
+		return  baskets.postItems(basketId, products, authorization, siteID);
+	}).then(data=>{
+		messageData = {
+			fulfillmentText: data.queryResult.parameters.productid + " added"
+		};
+		res.send(messageData);
+	});
 }
 
 function lookingFor(data, res) {
