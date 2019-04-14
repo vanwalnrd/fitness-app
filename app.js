@@ -57,8 +57,20 @@ app.post('/webhook/', (req, res) => {
 							fulfillmentText: err
 						};
 					}else {
+						// results retrieved 
+						var fulfillmentMessages = [];
+						for(let i = 0; i < data.count; i++){
+							var result = data.hits[i];
+							fulfillmentMessages.push({
+								card: {
+									title: result.product_name,
+									subtitle: result.price,
+									imageUri: result.image.link
+								}
+							});
+						}
 						messageData = {
-							fulfillmentText: `found ${data.count}`
+							fulfillmentMessages: fulfillmentMessages
 						};
 					}
 					res.send(messageData);
