@@ -68,7 +68,7 @@ ProductSearch.prototype.search = function(query, callback) {
     var options = {
         hostname:this.host,
         method:"GET",
-        path:`/s/${this.siteID}/dw/shop/${this.version}/product_search?client_id=${this.clientID}&q=${query}`,
+        path:`/s/${this.siteID}/dw/shop/${this.version}/product_search?client_id=${this.clientID}&q=${query}&expand=images,prices`,
         protocol:"https:",
         port:443,
         headers:{

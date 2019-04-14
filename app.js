@@ -64,7 +64,8 @@ app.post('/webhook/', (req, res) => {
 							fulfillmentMessages.push({
 								card: {
 									title: result.product_name,
-									subtitle: result.price
+									subtitle: result.price,
+									imageUri: result.image.link
 								}
 							});
 						}
