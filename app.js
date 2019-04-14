@@ -45,6 +45,9 @@ app.post('/webhook/', (req, res) => {
 		case 'looking-for':
 			lookingFor(data, res);
 			break;
+		case 'add-to-cart':
+			addToCart(data, res);
+			break;
 		default:
 			//unhandled action
 			break;
@@ -56,6 +59,13 @@ app.post('/webhook/', (req, res) => {
 app.listen(app.get('port'), function () {
 	console.log('running on port', app.get('port'))
 });
+
+function addToCart(data, res) {
+	messageData = {
+		fulfillmentText: "added"
+	};
+	res.send(messageData);
+}
 
 function lookingFor(data, res) {
 	console.log("Search triggered for: " + query);
