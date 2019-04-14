@@ -84,6 +84,12 @@ function addToCart(data, res) {
 			fulfillmentText: data.queryResult.parameters.productid + " added"
 		};
 		res.send(messageData);
+	}).catch(reason=>{
+		console.error(reason);
+		messageData = {
+			fulfillmentText: "Error: " + reason
+		};
+		res.send(messageData);
 	});
 }
 
