@@ -56,7 +56,7 @@ app.post('/webhook/', (req, res) => {
 	var data = req.body;
 	console.log("Request Received: " + JSON.stringify(data));
 	
-	var actionName = data.intent.displayName;
+	var actionName = data.queryResult.intent.displayName;
 		
 	switch (actionName) {
 		case 'test':
