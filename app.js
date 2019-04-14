@@ -51,7 +51,8 @@ app.post('/webhook/', (req, res) => {
 		case 'looking-for':
 			{
 				console.log("Looking For Search");
-				productSearch.search("tie",(err,data)=> {
+				var query = data.queryResult.parameters.query;
+				productSearch.search(query,(err,data)=> {
 					if (err){
 						messageData = {
 							fulfillmentText: err
