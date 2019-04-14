@@ -35,9 +35,9 @@ app.post('/webhook/', (req, res) => {
 
 	var data = req.body;
 	console.log("Request Received: " + JSON.stringify(data));
-	
+
 	var actionName = data.queryResult.intent.displayName;
-		
+
 	switch (actionName) {
 		case 'test':
 			testResponse(res);
@@ -78,7 +78,7 @@ function lookingFor(data, res) {
 				var result = data.hits[i];
 				fulfillmentMessages.push({
 					card: {
-						title: result.product_name,
+						title: result.product_id + ": " + result.product_name,
 						subtitle: result.price,
 						imageUri: result.image.link
 					}
