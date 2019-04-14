@@ -1,5 +1,5 @@
 var config = {
-  development : {
+  production : {
     clientId : 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
     clientPassword : 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
     host : 'lyonscg04-alliance-prtnr-na04-dw.demandware.net',
