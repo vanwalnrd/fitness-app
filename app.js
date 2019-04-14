@@ -51,10 +51,16 @@ app.post('/webhook/', (req, res) => {
 		case 'looking-for':
 			{
 				console.log("Looking For Search");
-				productSearch.search("sneaker",(err,data)=> {
-					messageData = {
-						fulfillmentText: data
-					};
+				productSearch.search("tie",(err,data)=> {
+					if (err){
+						messageData = {
+							fulfillmentText: err
+						};
+					}else {
+						messageData = {
+							fulfillmentText: `found ${data.count}`
+						};
+					}
 					res.send(messageData);
 				});
 			}
