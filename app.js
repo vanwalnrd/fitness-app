@@ -8,7 +8,7 @@ const app = express();
 const Util = require('./util');
 const OCAPIConfig = Util.readOCAPIConfig();
 const ProductSearch = require('./OCAPI/product_search');
-const productSearch = new ProductSearch(OCAPIConfig.clientId,OCAPIConfig.host,OCAPIConfig.version);
+const productSearch = new ProductSearch(OCAPIConfig.clientId, OCAPIConfig.siteId, OCAPIConfig.host, OCAPIConfig.version);
 
 var text = '';
 var messageData;

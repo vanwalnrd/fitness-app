@@ -40,9 +40,10 @@ var https = require('https');
 * 
 * - Evaluate a better async model (return Promise? asyncawait?) for consistency and ease of use
 */
-var ProductSearch = function(clientID, host, version="v19_2") {
+var ProductSearch = function(clientID, siteID, host, version="v19_2") {
     this.clientID = clientID;
     this.host = host;
+    this.siteID = siteID;
     this.version = version;
 };
 

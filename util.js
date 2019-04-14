@@ -7,7 +7,6 @@ exports.readOCAPIConfig = function () {
     console.log("Reading Configuration Data");
 
     var env = process.env.NODE_ENV || 'development';
-    console.log(env);
     var config = null;
     try {
         config = require('./ocapiConfig')[env];
@@ -16,7 +15,6 @@ exports.readOCAPIConfig = function () {
         console.error(e);
         return null;
     }
-    console.log("ocapiConfig found: " + JSON.stringify(config));
     // ensure required environment config variables are set
     var requiredProperties = ['clientId', 'clientPassword', 'host', 'siteId'];
     var verifyOCAPI = (property) => verifyExists(property, config, 'ocapiConfig.js');
