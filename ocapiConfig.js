@@ -2,14 +2,14 @@ var config = {
   development : {
     clientId : 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
     clientPassword : 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-    host : 'lyons09-evaluation-dw.demandware.net',
-    siteId: 'LyonsRefApp',
-    customerListId: "SiteGenesis",
+    host : 'lyonscg04-alliance-prtnr-na04-dw.demandware.net',
+    siteId: 'RefArch',
+    customerListId: "RefArch",
     // if provided must be formatted as v18_2 
     version: "v18_2",
     // optional - only needed for business manager user grants
     user : 'admin',
-    password : 'password123!'
+    password : 'Lyons07&'
   }
 };
 module.exports = config;

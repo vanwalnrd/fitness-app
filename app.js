@@ -5,6 +5,10 @@ const config = require('./config');
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+const Util = require('./util');
+const OCAPIConfig = Util.readOCAPIConfig();
+const ProductSearch = require('./OCAPI/product_search');
+const productSearch = new ProductSearch(OCAPIConfig.clientId,OCAPIConfig.host,OCAPIConfig.version);
 
 var text = '';
 var messageData;
@@ -47,6 +51,12 @@ app.post('/webhook/', (req, res) => {
 		case 'looking-for':
 			{
 				console.log("Looking For Search");
+				productSearch.search("sneaker",(err,data)=> {
+					messageData = {
+						fulfillmentText: data
+					};
+					res.send(messageData);
+				});
 			}
 			break;
 		default:
