@@ -59,7 +59,7 @@ app.post('/webhook/', (req, res) => {
 						};
 					}else if (data.count == 0) {
 						messageData = {
-							fulfillmentText: "No results found for: " + query;
+							fulfillmentText: "No results found for: " + query
 						};
 					}else {
 						// results retrieved 
