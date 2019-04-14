@@ -70,12 +70,6 @@ function addToCart(data, res) {
 	}];
 
 	customers.auth(config.siteId, {type:'guest'},null).then(data => {
-		// authenticated successfully
-		if (checkoutConfig.auth.type == "credentials"){
-			console.log("login successful");
-		}else {
-			console.log('Customer created: '+data.parsedData.customer_id);
-		}
 		// now get a basket for that customer
 		authorization = data.authorization;
 		return baskets.createBasket(config.siteId, authorization);
