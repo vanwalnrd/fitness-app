@@ -7,6 +7,7 @@ exports.readOCAPIConfig = function () {
     console.log("Reading Configuration Data");
 
     var env = process.env.NODE_ENV || 'development';
+    console.log(env);
     var config = null;
     try {
         config = require('./ocapiConfig')[env];
