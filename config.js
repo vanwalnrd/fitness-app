@@ -1,7 +1,7 @@
 module.exports = {
     // FB_PAGE_TOKEN: '',
     // FB_VERIFY_TOKEN: '',
-    API_AI_CLIENT_ACCESS_TOKEN: 'e55d03f66dbd4e2787e8a9f57c0c31fb',
+    API_AI_CLIENT_ACCESS_TOKEN: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
     // FB_APP_SECRET: '',
-    SERVER_URL: 'https://mcdies-app.herokuapp.com/',
+    SERVER_URL: 'https://ocapi-conversational-test.herokuapp.com/',
 };
