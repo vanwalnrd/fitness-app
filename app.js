@@ -63,8 +63,7 @@ app.post('/webhook/', (req, res) => {
 			{
 				text = "Response from Heroku";
 				messageData = {
-					speech: text,
-					displayText: text
+					fulfillmentText: text
 				}
 				res.send(messageData);
 			}
