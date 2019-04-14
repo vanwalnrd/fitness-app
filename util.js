@@ -15,7 +15,7 @@ exports.readOCAPIConfig = function () {
         console.error(e);
         return null;
     }
-
+    console.log("ocapiConfig found: " + JSON.stringify(config));
     // ensure required environment config variables are set
     var requiredProperties = ['clientId', 'clientPassword', 'host', 'siteId'];
     var verifyOCAPI = (property) => verifyExists(property, config, 'ocapiConfig.js');
