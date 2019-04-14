@@ -57,6 +57,10 @@ app.post('/webhook/', (req, res) => {
 						messageData = {
 							fulfillmentText: err
 						};
+					}else if (data.count == 0) {
+						messageData = {
+							fulfillmentText: "No results found for: " + query;
+						};
 					}else {
 						// results retrieved 
 						var fulfillmentMessages = [];
