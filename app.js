@@ -69,6 +69,7 @@ function addToCart(data, res) {
 		quantity:1
 	}];
 
+
 	customers.auth(config.siteId, {type:'guest'},null).then(data => {
 		// now get a basket for that customer
 		authorization = data.authorization;
@@ -81,7 +82,7 @@ function addToCart(data, res) {
 		return  baskets.postItems(basketId, products, authorization, siteID);
 	}).then(data=>{
 		messageData = {
-			fulfillmentText: data.queryResult.parameters.productid + " added"
+			fulfillmentText: productID + " added"
 		};
 		res.send(messageData);
 	}).catch(reason=>{
