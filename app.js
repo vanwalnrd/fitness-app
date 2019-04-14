@@ -54,10 +54,10 @@ function notify(emailId, messageId) {
 app.post('/webhook/', (req, res) => {
 
 	var data = req.body;
-	var sessionId = req.body.sessionId;
-	var actionName = req.body.result.action;
-	var parameters = req.body.result.parameters;
-	var message = req.body.result.resolvedQuery;
+	console.log("Request Received: " + JSON.stringify(data));
+	
+	var actionName = data.intent.displayName;
+		
 	switch (actionName) {
 		case 'test':
 			{
