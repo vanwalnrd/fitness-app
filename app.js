@@ -27,7 +27,8 @@ app.use(bodyParser.json());
 
 // Index route
 app.get('/', function (req, res) {
-	res.send('Hello world, I am a chat bot')
+	console.log('Hello world hit!');
+	res.send('Hello world, I am a chat bot');
 });
 
 app.post('/webhook/', (req, res) => {

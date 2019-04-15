@@ -1,0 +1,52 @@
+{
+    "auth":{
+        "type":"guest"
+    },
+    "products":[
+        {
+            "product_id":"750518894577M",
+            "quantity":1
+        }
+    ],
+    "payment_instrument":{
+        "payment_card":{
+            "card_type":"Visa",
+            "expiration_month":12,
+            "expiration_year":2020,
+            "holder":"Test User",
+            "number":"4111111111111111",
+            "security_code":"123"
+        },
+        "payment_method_id":"CREDIT_CARD"
+    },
+    "billing_address":{
+        "first_name":"Test",
+        "last_name":"User",
+        "address1":"315 E. Eisenhower Parkway",
+        "address2":"Suite 202",
+        "city":"Ann Arbor",
+        "country_code":"US",
+        "phone": "7344187925",
+        "postal_code": "48108",
+        "state_code": "MI"
+      },
+    "shipments":[{
+            "gift":false,
+            "shipping_method":{
+              "id":"001"
+            },
+            "shipping_address" : {
+               "address1" : "20 North Wacker Drive",
+               "address2" : "Suite 1750",
+               "city" : "Chicago",
+               "country_code" : "US",
+               "first_name" : "Test",
+               "full_name" : "Test User",
+               "last_name" : "User",
+               "postal_code" : "60606",
+               "salutation" : "Mr.",
+               "state_code" : "IL"
+             }
+          }
+    ]
+}
